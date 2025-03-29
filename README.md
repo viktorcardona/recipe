@@ -7,6 +7,7 @@ This microservice manages recipes for a food application.
 - [Architecture Overview](#architecture-overview)
 - [API Design](#api-design)
 - [Data Management](#data-management)
+- [Error Handling](#error-handling)
 - [Deployment](#deployment)
 - [How to Run](#how-to-run)
 
@@ -53,8 +54,7 @@ Mapstruct handles the mapping between database entities and DTOs.
 TestContainers is used to run the integration tests using a docker container postgresql databases.
 
 
-
-## Database Model
+**Database Model**
 
 ```mermaid
 erDiagram
@@ -83,6 +83,26 @@ erDiagram
 ```
 
 
+## Error Handling
+
+This microservice employs a centralized error handling mechanism to provide consistent and informative error responses to clients. The `ErrorHandler` class, annotated with `@ControllerAdvice`, intercepts exceptions and translates them into standardized `ErrorDto` object, which are then returned in the HTTP response body.
+
+**General Principles:**
+
+* **Consistent Format:** All error responses adhere to a uniform `ErrorDto` structure, containing `title`, `status` (HTTP status code), and `detail` (error message or description).
+* **Logging:** Errors are logged using SLF4J for debugging and monitoring purposes.
+* **Specific Exceptions:** The handler covers a range of specific exceptions to provide tailored error messages.
+
+**ErrorDto Structure:**
+
+```json
+{
+    "title": "Error Title",
+    "status": 400,
+    "detail": "Error details"
+}
+
+
 
 ## Deployment
 
@@ -107,20 +127,18 @@ The following environment variables are used to configure the database connectio
 
 Requirements:
 
-Make sure the installation of:
+To run this application, ensure you have the following installed:
 
 - Java 21
 - Maven 3.9.9
 - Docker
 
-Make sure the following ports are free:
+Also, make sure the following ports are available:
 
 - 8080
 - 5432
 
-Make sure the existence of the file: **recipe-service/.env**
-
-## Steps to run the app
+**Steps to run the app**
 
 1. Go to directory: **recipe-spec**
 2. Run the command: `mvn clean package`
@@ -130,23 +148,3 @@ Make sure the existence of the file: **recipe-service/.env**
 6. Run the command: `docker-compose build --no-cache`
 7. Run the command: `docker-compose up`
 8. For testing the app use Postman and import the file: **recipe-docs/Recipe.postman_collection.json**
-
-
-## Error Handling
-
-This microservice employs a centralized error handling mechanism to provide consistent and informative error responses to clients. The `ErrorHandler` class, annotated with `@ControllerAdvice`, intercepts exceptions and translates them into standardized `ErrorDto` object, which are then returned in the HTTP response body.
-
-**General Principles:**
-
-* **Consistent Format:** All error responses adhere to a uniform `ErrorDto` structure, containing `title`, `status` (HTTP status code), and `detail` (error message or description).
-* **Logging:** Errors are logged using SLF4J for debugging and monitoring purposes.
-* **Specific Exceptions:** The handler covers a range of specific exceptions to provide tailored error messages.
-
-**ErrorDto Structure:**
-
-```json
-{
-    "title": "Error Title",
-    "status": 400,
-    "detail": "Error details"
-}
