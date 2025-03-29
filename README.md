@@ -35,11 +35,11 @@ The following endpoints are available:
 - `GET /v1/recipe/{recipeId}`: Retrieves a recipe given its ID
 - `GET /v1/recipe`: Retrieves recipes by filetering by multiple parameters like dishType, dishTypeIsIncluded, servings, ingredients, ingredientsIsIncluded, and instructionsContains. There are also parameters to handle pagination like page, page_size, and to sort by a given field name.
 
-## API Docs
+**API Docs**
 
-For greater detail of API Spec, please run the app and check the API Spec document in the following URL:
+The API specification is available in OpenAPI format via Swagger UI: 
 
-- `http://localhost:8080/swagger-ui/index.html`
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
 
 ## Data Management
@@ -91,14 +91,16 @@ This service is containerized using Docker.
 The `recipe-service/docker-compose.yaml` file defines the service and its dependencies. 
 
 Environment variables are used to configure the database connection.
-The environment variables are placed in the file **recipe-service/.env** with the following variables:
+The environment variables are placed in the file `recipe-service/.env`, a file used by docker compose to set environment variables. 
 
-- POSTGRES_DB
-- POSTGRES_USER
-- POSTGRES_PASSWORD
-- SPRING_DATASOURCE_URL
-- SPRING_DATASOURCE_USERNAME
-- SPRING_DATASOURCE_PASSWORD
+The following environment variables are used to configure the database connection:
+
+- POSTGRES_DB: The name of the PostgreSQL database.
+- POSTGRES_USER: The PostgreSQL username.
+- POSTGRES_PASSWORD: The PostgreSQL password.
+- SPRING_DATASOURCE_URL: The JDBC URL for the PostgreSQL database connection.
+- SPRING_DATASOURCE_USERNAME: The username used by Spring Boot to connect to the database.
+- SPRING_DATASOURCE_PASSWORD: The password used by Spring Boot to connect to the database.
 
 
 ## How to Run
