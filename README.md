@@ -101,7 +101,7 @@ This microservice employs a centralized error handling mechanism to provide cons
     "status": 400,
     "detail": "Error details"
 }
-
+```
 
 
 ## Deployment
