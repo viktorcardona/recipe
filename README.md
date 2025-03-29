@@ -35,9 +35,11 @@ The following endpoints are available:
 - `GET /v1/recipe/{recipeId}`: Retrieves a recipe given its ID
 - `GET /v1/recipe`: Retrieves recipes by filetering by multiple parameters like dishType, dishTypeIsIncluded, servings, ingredients, ingredientsIsIncluded, and instructionsContains. There are also parameters to handle pagination like page, page_size, and to sort by a given field name.
 
-**For greater detail of API Spec, please run the app and check the API Spec document in the following URL:**
+## API Docs
 
-- http://localhost:8080/swagger-ui/index.html
+For greater detail of API Spec, please run the app and check the API Spec document in the following URL:
+
+- `http://localhost:8080/swagger-ui/index.html`
 
 
 ## Data Management
@@ -48,7 +50,7 @@ Flyway is used for database migrations, ensuring consistent schema updates.
 
 Mapstruct handles the mapping between database entities and DTOs. 
 
-TestContainers is used to create test databases.
+TestContainers is used to run the integration tests using a docker container postgresql databases.
 
 
 
@@ -82,15 +84,21 @@ erDiagram
 
 
 
-
-
-
-
 ## Deployment
 
-This service is containerized using Docker. The `docker-compose.yaml` file defines the service and its dependencies. 
+This service is containerized using Docker. 
+
+The `recipe-service/docker-compose.yaml` file defines the service and its dependencies. 
 
 Environment variables are used to configure the database connection.
+The environment variables are placed in the file **recipe-service/.env** with the following variables:
+
+- POSTGRES_DB
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- SPRING_DATASOURCE_URL
+- SPRING_DATASOURCE_USERNAME
+- SPRING_DATASOURCE_PASSWORD
 
 
 ## How to Run
@@ -99,25 +107,44 @@ Requirements:
 
 Make sure the installation of:
 
-Java 21
-Maven 3.9.9
-Docker
+- Java 21
+- Maven 3.9.9
+- Docker
 
 Make sure the following ports are free:
 
 - 8080
 - 5432
 
-Make sure the existence of the file: recipe-service/.env
+Make sure the existence of the file: **recipe-service/.env**
 
-Steps to run the app:
+## Steps to run the app
 
-1. Go to directory: recipe-spec
-2. Run the command: mvn clean package
-3. Run the command: mvn install:install-file -Dfile=target/recipe-spec-1.0.0.jar -DgroupId=abn -DartifactId=recipe-spec -Dversion=1.0.0 -Dpackaging=jar
-4. Go to directory: recipe-service
-5. Run the command: mvn clean package
-6. Run the command: docker-compose build --no-cache
-7. Run the command: docker-compose up
-8. For testing the app use Postman and import the file: recipe-docs/Recipe.postman_collection.json
+1. Go to directory: **recipe-spec**
+2. Run the command: `mvn clean package`
+3. Run the command: `mvn install:install-file -Dfile=target/recipe-spec-1.0.0.jar -DgroupId=abn -DartifactId=recipe-spec -Dversion=1.0.0 -Dpackaging=jar`
+4. Go to directory: **recipe-service**
+5. Run the command: `mvn clean package`
+6. Run the command: `docker-compose build --no-cache`
+7. Run the command: `docker-compose up`
+8. For testing the app use Postman and import the file: **recipe-docs/Recipe.postman_collection.json**
 
+
+## Error Handling
+
+This microservice employs a centralized error handling mechanism to provide consistent and informative error responses to clients. The `ErrorHandler` class, annotated with `@ControllerAdvice`, intercepts exceptions and translates them into standardized `ErrorDto` object, which are then returned in the HTTP response body.
+
+**General Principles:**
+
+* **Consistent Format:** All error responses adhere to a uniform `ErrorDto` structure, containing `title`, `status` (HTTP status code), and `detail` (error message or description).
+* **Logging:** Errors are logged using SLF4J for debugging and monitoring purposes.
+* **Specific Exceptions:** The handler covers a range of specific exceptions to provide tailored error messages.
+
+**ErrorDto Structure:**
+
+```json
+{
+    "title": "Error Title",
+    "status": 400,
+    "detail": "Error details"
+}
