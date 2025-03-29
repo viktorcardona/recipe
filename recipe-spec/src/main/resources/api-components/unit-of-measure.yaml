@@ -1,0 +1,11 @@
+UnitOfMeasure:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    name:
+      type: string
+      nullable: false
+      minLength: 1
+      maxLength: 100

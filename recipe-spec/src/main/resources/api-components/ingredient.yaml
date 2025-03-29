@@ -1,0 +1,21 @@
+Ingredient:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    name:
+      type: string
+      minLength: 1
+      maxLength: 100
+    amount:
+      type: number
+      format: double
+      minimum: 0.1
+      description: "Amount of the ingredient"
+    unitOfMeasure:
+      $ref: "unit-of-measure.yaml#/UnitOfMeasure"
+  required:
+    - name
+    - amount
+    - unitOfMeasure

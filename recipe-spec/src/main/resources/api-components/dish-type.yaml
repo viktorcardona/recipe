@@ -1,0 +1,20 @@
+DishType:
+  type: string
+  enum:
+    - VEGETARIAN
+    - MEAT_BASED
+    - VEGAN
+    - PESCATARIAN
+    - LACTO_VEGETARIAN
+    - OVO_VEGETARIAN
+    - MEAT_AND_VEGETARIAN
+    - OTHER
+  x-enum-varnames:
+    - VEGETARIAN
+    - MEAT_BASED
+    - VEGAN
+    - PESCATARIAN
+    - LACTO_VEGETARIAN
+    - OVO_VEGETARIAN
+    - MEAT_AND_VEGETARIAN
+    - OTHER

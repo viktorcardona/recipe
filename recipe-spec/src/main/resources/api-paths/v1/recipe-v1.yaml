@@ -1,0 +1,193 @@
+#/v1/recipe
+recipe:
+  post:
+    tags:
+      - Recipe
+    operationId: addRecipe
+    description: Add a new recipe.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../../api-components/recipe.yaml#/Recipe"
+    responses:
+      201:
+        description: Successful operation
+      500:
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/error.yaml#/Error"
+  get:
+    tags:
+      - Recipe
+    operationId: getRecipes
+    description: Retrieves a list of recipes given the specified filter parameters.
+    parameters:
+      - name: page
+        description: Pagination page number. Starts at 0, not 1
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: page_size
+        description: Pagination page elements size
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 10
+      - name: sortBy
+        description: The field to sort by.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: sortDirection
+        description: The sort direction (asc or desc).
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+            - asc
+            - desc
+      - name: dishType
+        description: dish type
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: "../../api-components/dish-type.yaml#/DishType"
+      - name: dishTypeIsIncluded
+        in: query
+        description: Indicates if the dish type should be included (true) or excluded (false).
+        schema:
+          type: boolean
+          default: true
+      - name: servings
+        description: servings
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: ingredients
+        description: the ingredients (included or excluded) in the recipe
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: ingredientsIsIncluded
+        in: query
+        description: Indicates if the ingredients should be included (true) or excluded (false).
+        schema:
+          type: boolean
+          default: true
+      - name: instructionsContains
+        description: the instructions contains the given value
+        in: query
+        required: false
+        schema:
+          type: string
+    responses:
+      200:
+        description: A paginated list of recipes.
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/recipe-list.yaml#/RecipeList"
+      400:
+        description: Bad request. Validation errors or invalid input.
+      500:
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/error.yaml#/Error"
+
+#/v1/recipe/{recipeId}:
+recipe-by-id:
+  get:
+    tags:
+      - Recipe
+    operationId: getRecipeById
+    description: Retrieves a recipe given its ID.
+    parameters:
+      - name: recipeId
+        description: ID of the recipe to retrieve.
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+    responses:
+      200:
+        description: The requested recipe
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/recipe.yaml#/Recipe"
+      404:
+        description: Recipe not found
+      500:
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/error.yaml#/Error"
+  put:
+    tags:
+      - Recipe
+    operationId: updateRecipe
+    description: Update a recipe given its ID and new content.
+    parameters:
+      - name: recipeId
+        in: path
+        description: ID of the recipe to update.
+        required: true
+        schema:
+          type: integer
+          format: int64
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../../api-components/recipe.yaml#/Recipe"
+    responses:
+      204:
+        description: successful operation
+      404:
+        description: Recipe not found
+      500:
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/error.yaml#/Error"
+  delete:
+    tags:
+      - Recipe
+    operationId: deleteRecipe
+    description: Deletes a recipe given its ID.
+    parameters:
+      - name: recipeId
+        in: path
+        required: true
+        description: ID of the recipe to delete.
+        schema:
+          type: integer
+          format: int64
+    responses:
+      204:
+        description: successful operation
+      404:
+        description: Recipe not found

@@ -1,0 +1,617 @@
+{
+	"info": {
+		"_postman_id": "88cebaa8-2fdc-4ea5-bfc5-06b1171725f8",
+		"name": "Recipe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "316318"
+	},
+	"item": [
+		{
+			"name": "units of measure",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/units",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"units"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dish-types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/dish-types",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"dish-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe-meat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"grilled chicken\",\n  \"dishType\": \"MEAT_BASED\",\n  \"servings\": 4,\n  \"instructions\": \"Wash the chicken, season it, and put it in the oven for 1.2 hours.\",\n  \"ingredients\": [\n    {\n      \"name\": \"chicken\",\n      \"amount\": 2,\n      \"unitOfMeasure\": {\n        \"id\": 3,\n        \"name\": \"Kilogram\"\n      }\n    },\n    {\n      \"name\": \"potatoes\",\n      \"amount\": 10,\n      \"unitOfMeasure\": {\n        \"id\": 9,\n        \"name\": \"Piece\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe vegetarian 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Tomato Bruschetta\",\n  \"dishType\": \"VEGETARIAN\",\n  \"servings\": 4,\n  \"instructions\": \"Preheat oven to 375°F (190°C). Slice baguette into 1-inch thick pieces. Brush baguette slices with olive oil and bake for 8-10 minutes, or until golden brown. In a bowl, combine diced tomatoes, minced garlic, basil, and olive oil. Season with salt and pepper. Spoon tomato mixture onto toasted baguette slices. Drizzle with balsamic glaze before serving\",\n  \"ingredients\": [\n    {\n      \"name\": \"Ripe Tomatoes\",\n      \"amount\": 4,\n      \"unitOfMeasure\": {\n        \"id\": 9,\n        \"name\": \"Piece\"\n      }\n    },\n    {\n      \"name\": \"Garlic\",\n      \"amount\": 2,\n      \"unitOfMeasure\": {\n        \"id\": 9,\n        \"name\": \"Piece\"\n      }\n    },\n    {\n      \"name\": \"Olive Oil\",\n      \"amount\": 3,\n      \"unitOfMeasure\": {\n        \"id\": 7,\n        \"name\": \"Tablespoon\"\n      }\n    },\n    {\n      \"name\": \"Salt\",\n      \"amount\": 0.5,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    },\n    {\n      \"name\": \"Black Pepper\",\n      \"amount\": 0.25,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe vegetarian 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Avocado Toast with Lemon & Chili Flakes\",\n  \"dishType\": \"VEGETARIAN\",\n  \"servings\": 4,\n  \"instructions\": \"Toast the whole-grain bread slices until golden and crisp. In a small bowl, mash the ripe avocado with a fork. Add lemon juice and salt, then mix well. Spread the mashed avocado evenly over the toasted bread. Sprinkle red chili flakes on top for a slight kick. Drizzle with olive oil and garnish with sesame seeds if desired. Serve immediately and enjoy!\",\n  \"ingredients\": [\n    {\n      \"name\": \"Whole-Grain Bread\",\n      \"amount\": 2,\n      \"unitOfMeasure\": {\n        \"id\": 10,\n        \"name\": \"Slice\"\n      }\n    },\n    {\n      \"name\": \"Ripe Avocado\",\n      \"amount\": 1,\n      \"unitOfMeasure\": {\n        \"id\": 9,\n        \"name\": \"Piece\"\n      }\n    },\n    {\n      \"name\": \"Lemon Juice\",\n      \"amount\": 0.5,\n      \"unitOfMeasure\": {\n        \"id\": 7,\n        \"name\": \"Tablespoon\"\n      }\n    },\n    {\n      \"name\": \"Salt\",\n      \"amount\": 0.25,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    },\n    {\n      \"name\": \"Red Chili Flakes\",\n      \"amount\": 0.25,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    },\n    {\n      \"name\": \"Olive Oil\",\n      \"amount\": 0.5,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    },\n    {\n      \"name\": \"Sesame Seeds\",\n      \"amount\": 0.25,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe-vegan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Snack Avocado Toast\",\n  \"dishType\": \"VEGAN\",\n  \"servings\": 1,\n  \"instructions\": \"Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.\",\n  \"ingredients\": [\n    {\n      \"name\": \"Bread Slice\",\n      \"amount\": 1,\n      \"unitOfMeasure\": {\n        \"id\": 10,\n        \"name\": \"Slice\"\n      }\n    },\n    {\n      \"name\": \"Ripe Avocado\",\n      \"amount\": 0.5,\n      \"unitOfMeasure\": {\n        \"id\": 9,\n        \"name\": \"Piece\"\n      }\n    },\n    {\n      \"name\": \"Lime Juice\",\n      \"amount\": 1,\n      \"unitOfMeasure\": {\n        \"id\": 7,\n        \"name\": \"Tablespoon\"\n      }\n    },\n    {\n      \"name\": \"Salt\",\n      \"amount\": 0.25,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    },\n    {\n      \"name\": \"Black Pepper\",\n      \"amount\": 0.80,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe-very-long-name",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.\",\n  \"dishType\": \"VEGAN\",\n  \"servings\": 1,\n  \"instructions\": \"Toast the bread slice until golden brown. Mash the avocado with a fork in a small bowl. Spread the mashed avocado evenly over the toasted bread. Sprinkle with salt, pepper, and red pepper flakes. Drizzle with lime juice before serving.\",\n  \"ingredients\": [\n    {\n      \"name\": \"Bread Slice\",\n      \"amount\": 1,\n      \"unitOfMeasure\": {\n        \"id\": 10,\n        \"name\": \"Slice\"\n      }\n    },\n    {\n      \"name\": \"Ripe Avocado\",\n      \"amount\": 0.5,\n      \"unitOfMeasure\": {\n        \"id\": 9,\n        \"name\": \"Piece\"\n      }\n    },\n    {\n      \"name\": \"Lime Juice\",\n      \"amount\": 1,\n      \"unitOfMeasure\": {\n        \"id\": 7,\n        \"name\": \"Tablespoon\"\n      }\n    },\n    {\n      \"name\": \"Salt\",\n      \"amount\": 0.25,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    },\n    {\n      \"name\": \"Black Pepper\",\n      \"amount\": 0.80,\n      \"unitOfMeasure\": {\n        \"id\": 8,\n        \"name\": \"Teaspoon\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe-without-ingredients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Toast!\",\n  \"dishType\": \"VEGAN\",\n  \"servings\": 1,\n  \"instructions\": \"prepare it!.\",\n  \"ingredients\": [\n    \n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&sortBy=name&sortDirection=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "sortBy",
+							"value": "name"
+						},
+						{
+							"key": "sortDirection",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes VEGETARIAN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&dishType=VEGETARIAN&dishTypeIsIncluded=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "dishType",
+							"value": "VEGETARIAN"
+						},
+						{
+							"key": "dishTypeIsIncluded",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes not VEGETARIAN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&dishType=VEGETARIAN&dishTypeIsIncluded=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "dishType",
+							"value": "VEGETARIAN"
+						},
+						{
+							"key": "dishTypeIsIncluded",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes number of servings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&servings=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "servings",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes ingredient included",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&ingredients=Garlic&ingredientsIsIncluded=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "ingredients",
+							"value": "Garlic"
+						},
+						{
+							"key": "ingredientsIsIncluded",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes ingredient excluded",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&ingredients=Garlic&ingredientsIsIncluded=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "ingredients",
+							"value": "Garlic"
+						},
+						{
+							"key": "ingredientsIsIncluded",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes search in instructions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&instructionsContains=oven",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "instructionsContains",
+							"value": "oven"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes 4 servings & potatos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&servings=4&ingredients=potatoes&ingredientsIsIncluded=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "servings",
+							"value": "4"
+						},
+						{
+							"key": "ingredients",
+							"value": "potatoes"
+						},
+						{
+							"key": "ingredientsIsIncluded",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipes without salmon & oven instructions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe?page_size=10&page=0&ingredients=salmon&ingredientsIsIncluded=false&instructionsContains=oven",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "ingredients",
+							"value": "salmon"
+						},
+						{
+							"key": "ingredientsIsIncluded",
+							"value": "false"
+						},
+						{
+							"key": "instructionsContains",
+							"value": "oven"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe vegetarian 1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"lockVersion\": 0,\n    \"name\": \"Tomato Bruschetta\",\n    \"dishType\": \"VEGETARIAN\",\n    \"servings\": 4,\n    \"instructions\": \"Preheat oven to 375°F (190°C). Slice baguette into 1-inch thick pieces. Brush baguette slices with olive oil and bake for 8-10 minutes, or until golden brown. In a bowl, combine diced tomatoes, minced garlic, basil, and olive oil. Season with salt and pepper. Spoon tomato mixture onto toasted baguette slices. Drizzle with balsamic glaze before serving\",\n    \"ingredients\": [\n        {\n            \"id\": 6,\n            \"name\": \"Salt\",\n            \"amount\": 0.5,\n            \"unitOfMeasure\": {\n                \"id\": 8,\n                \"name\": \"Teaspoon\"\n            }\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Garlic\",\n            \"amount\": 2,\n            \"unitOfMeasure\": {\n                \"id\": 9,\n                \"name\": \"Piece\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Ripe Tomatoes\",\n            \"amount\": 4,\n            \"unitOfMeasure\": {\n                \"id\": 9,\n                \"name\": \"Piece\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Olive Oil\",\n            \"amount\": 3,\n            \"unitOfMeasure\": {\n                \"id\": 7,\n                \"name\": \"Tablespoon\"\n            }\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Black Pepper\",\n            \"amount\": 0.25,\n            \"unitOfMeasure\": {\n                \"id\": 8,\n                \"name\": \"Teaspoon\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/recipe/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"recipe",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,35 @@
+Recipe:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    lockVersion:
+      type: integer
+      format: int64
+      readOnly: true
+    name:
+      type: string
+      minLength: 1
+      maxLength: 100
+    dishType:
+      $ref: "dish-type.yaml#/DishType"
+    servings:
+      type: integer
+      minimum: 1
+      maximum: 10000
+    instructions:
+      type: string
+      minLength: 1
+      maxLength: 4000
+    ingredients:
+      type: array
+      uniqueItems: true
+      items:
+        $ref: "ingredient.yaml#/Ingredient"
+      minItems: 1
+  required:
+    - name
+    - dishType
+    - instructions
+    - ingredients

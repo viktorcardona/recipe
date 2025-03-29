@@ -1,0 +1,10 @@
+RecipeList:
+  type: object
+  properties:
+    pagination:
+      $ref: "pagination.yaml#/Pagination"
+    recipes:
+      type: array
+      description: List of recipes
+      items:
+        $ref: "recipe.yaml#/Recipe"

@@ -1,0 +1,71 @@
+Pagination:
+  type: object
+  description: >
+    Describes what a paged response looks like.
+  properties:
+    meta:
+      type: object
+      properties:
+        page_type:
+          type: string
+          description: >
+            Specifies the type of paging being used.
+          enum:
+            - PAGE
+            - OFFSET
+            - CURSOR
+          example: 'PAGE'
+        page:
+          type: integer
+          format: int32
+          description: >
+            Specifies the number of the page being returned.
+          example: 0
+        page_size:
+          type: integer
+          format: int32
+          description: >
+            Specifies the page size.
+          example: 10
+        total_pages:
+          type: integer
+          format: int32
+          description: >
+            Specifies the total number of pages available.
+          example: 3
+        total_items:
+          type: integer
+          format: int64
+          description: >
+            Specifies the total number of items available.
+          example: 25
+    links:
+      type: object
+      description: >
+        Contain pagination links to various pages.
+      properties:
+        self:
+          type: string
+          description: >
+            Indicates the link the to current page itself.
+          example: 'page=1&page_size=10'
+        first:
+          type: string
+          description: >
+            Indicates the link the to first page.
+          example: 'page=0&page_size=10'
+        prev:
+          type: string
+          description: >
+            Indicates the link the to previous page.
+          example: 'page=0&page_size=10'
+        next:
+          type: string
+          description: >
+            Indicates the link the to next page.
+          example: 'page=2&page_size=10'
+        last:
+          type: string
+          description: >
+            Indicates the link the to last page.
+          example: 'page=3&page_size=10'

@@ -1,0 +1,16 @@
+#/v1/units
+units:
+  get:
+    tags:
+      - Units of Measure
+    operationId: getAllUnitsOfMeasure
+    description: Retrieves all the available units of measure.
+    responses:
+      200:
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "../../api-components/unit-of-measure.yaml#/UnitOfMeasure"

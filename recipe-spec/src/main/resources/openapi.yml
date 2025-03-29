@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  description: ABN AMRO - Recipe API
+  version: 1.0.0
+  title: Recipe API
+
+servers:
+  - url: http://fake-server.{environment}.abn.io
+    variables:
+      environment:
+        enum:
+          - dev
+          - test
+          - preprod
+          - prod
+        default: dev
+
+tags:
+  - name: Recipe
+  - name: Units of Measure
+  - name: Dish Types
+
+paths:
+  /v1/units:
+    $ref: 'api-paths/v1/units-v1.yaml#/units'
+  /v1/dish-types:
+    $ref: 'api-paths/v1/dish-types-v1.yaml#/dish-types'
+  /v1/recipe:
+    $ref: 'api-paths/v1/recipe-v1.yaml#/recipe'
+  /v1/recipe/{recipeId}:
+    $ref: 'api-paths/v1/recipe-v1.yaml#/recipe-by-id'

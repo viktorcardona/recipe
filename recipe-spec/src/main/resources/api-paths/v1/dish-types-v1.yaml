@@ -1,0 +1,22 @@
+#/v1/dish-types
+dish-types:
+  get:
+    tags:
+      - Dish Types
+    operationId: getAllDishTypes
+    description: Retrieves a list of all available dish types.
+    responses:
+      200:
+        description: A list of dish types.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "../../api-components/dish-type.yaml#/DishType"
+      500:
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: "../../api-components/error.yaml#/Error"
