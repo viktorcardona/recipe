@@ -6,10 +6,12 @@ This microservice manages recipes for a food application.
 
 - [Architecture Overview](#architecture-overview)
 - [API Design](#api-design)
+- [Security](#security)
 - [Data Management](#data-management)
 - [Error Handling](#error-handling)
 - [Deployment](#deployment)
 - [How to Run](#how-to-run)
+- [How to Test](#how-to-test)
 
 ## Architecture Overview
 
@@ -17,14 +19,19 @@ This service is built using a microservice architecture to allow for independent
 
 **Technology Stack:**
 
-- Spring Boot 3.4.4
-- Java 21
-- PostgreSQL DB
-- Docker
-- OpenAPI
-- Flyway
-- Mapstruct
-- TestContainers
+- **Backend:**
+    - Spring Boot 3.4.4: Framework for building Java applications.
+    - Java 21: The programming language used for the service.
+- **Database:**
+    - PostgreSQL DB: Relational database used for data storage.
+    - Flyway: Tool for managing database migrations.
+    - TestContainers: Library for running Docker containers in integration tests.
+- **Containerization:**
+    - Docker: Platform for containerizing the application.
+    - Docker Compose: Tool to define and run multi-container Docker applications.
+- **API:**
+    - OpenAPI: Specification for designing and documenting APIs.
+    - Mapstruct: Library for mapping between Java beans (DTOs).
 
 ## API Design
 
@@ -41,6 +48,17 @@ The following endpoints are available:
 The API specification is available in OpenAPI format via Swagger UI: 
 
 [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+
+## Security
+
+**Note:** This service currently does not implement any client authentication or authorization mechanisms (e.g., JWT, API Key). All endpoints are publicly accessible.
+
+**Future Considerations:**
+
+* Implement JWT-based authentication for secure client access.
+* Consider role-based access control (RBAC) to restrict access to certain endpoints.
+* Explore API Key authentication for external clients.
 
 
 ## Data Management
@@ -103,6 +121,10 @@ This microservice employs a centralized error handling mechanism to provide cons
 }
 ```
 
+**Security Related Errors:**
+
+* Currently, there are no security related errors, as the service does not implement authentication or authorization.
+
 
 ## Deployment
 
@@ -147,4 +169,11 @@ Also, make sure the following ports are available:
 5. Run the command: `mvn clean package`
 6. Run the command: `docker-compose build --no-cache`
 7. Run the command: `docker-compose up`
-8. For testing the app use Postman and import the file: **recipe-docs/Recipe.postman_collection.json**
+
+
+## How to Test
+
+- You can test the service by importing the following file into Postman: 
+
+**recipe-postman/Recipe.postman_collection.json**
+
