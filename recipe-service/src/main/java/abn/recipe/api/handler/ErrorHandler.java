@@ -3,7 +3,8 @@ package abn.recipe.api.handler;
 import abn.recipe.exception.ObjectNotFoundException;
 import abn.recipe.exception.ValidationException;
 import abn.recipe.spec.spec.ErrorDto;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-@Slf4j
 public class ErrorHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(ErrorHandler.class);
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneralException(Exception ex) {
